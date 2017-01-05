@@ -6,10 +6,20 @@ use app\index\model\User;
 class UserService extends User
 {
     public function add($data){
-        if(isset($data['password'])){
-            $data['password'] = md5($data['password']);
-        }
-        return $this->addUser($data);
+        $user=[
+            'true_name'=>$data['name'],
+            'user_name'=>$data['user_name'],
+            'password'=>md5($data['password']),
+            'mobile'=>$data['mobile'],
+            'email'=>$data['mail'],
+            'birthday'=>$data['birthday'],
+            'marry'=>$data['marry']=='y'?2:1,
+            'card_type'=>$data['cardType']=='IDCard'?'1':0,
+            'card'=>$data['card'],
+            'gender'=>$data['sex']
+        ];
+
+        return $this->addUser($user);
     }
 
     public function checkUser($userName,$password=''){

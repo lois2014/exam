@@ -1,37 +1,13 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/pageTest/css/public_style.css" rel="stylesheet"/>
-    <link href="/pageTest/css/top_foot.css" rel="stylesheet" />
-    <link href="/pageTest/css/member_style.css" rel="stylesheet" />
-    <script type="text/javascript" src="/pageTest/js/jquery-1.10.2.min.js"></script>
-</head>
+{include file="/common/head"}
+
 <body>
+<link href="../public/static/css/member_style.css" rel="stylesheet" />
 <div class="topbox">
     <!--顶部-->
-    <div class="topbanner_all">
-        <div class="topbanner">
-            <div class="topbanner_right">
-                <a href="/pageTest/tpl/">首页</a>
-                <a href="/pageTest/tpl/login.html">登录</a>
-                <a href="/pageTest/tpl/register.html">注册</a>
-                <a href="#">预约流程</a>
-            </div>
-        </div>
-    </div>
+    {include file="/common/top"}
     <!---->
     <!--头部-->
-    <div class="top clearfix">
-        <div class="logo">
-            <a href="index.html">
-                <img src="/pageTest/img/logo.png">
-                <div class="txt"> 中国人的健康体检服务平台 </div>
-            </a>
-        </div>
-    </div>
+    {include file="/common/header"}
     <!---->
 </div>
 <div class="content">
@@ -43,25 +19,26 @@
                         <h3>会员注册</h3>
                     </div>
                     <div class="error_message" id="error" style="display: none"></div>
+                    <form action="/examination/public/register" method="post" id="form_reg">
                     <ul>
                         <li>
                             <p>
                                 <span>用户名</span>
-                                <input type="text" id="userName" placeholder="邮箱或者手机号码或者证件号" maxlength="20" >
+                                <input type="text" id="userName" name="user_name" placeholder="邮箱或者手机号码或者证件号" maxlength="20" >
                             </p>
                             <span id="userTip" class="prompt"></span>
                         </li>
                         <li>
                             <p>
                                 <span>设置密码</span>
-                                <input type="password" id="password" placeholder="密码长度要求6-20位(不能包含空白字符)" maxlength="20" >
+                                <input type="password" id="password"  name="password" placeholder="密码长度要求6-20位(不能包含空白字符)" maxlength="20" >
                                 <span id="pwdTip" class="prompt"></span>
                             </p>
                         </li>
                         <li>
                             <p>
                                 <span>确认密码</span>
-                                <input type="password" id="rePassword" placeholder="请再次输入确认密码" maxlength="20" >
+                                <input type="password" id="rePassword" name="rePassword" placeholder="请再次输入确认密码" maxlength="20" >
                                 <span id="rePwdTip" class="prompt"></span>
                             </p>
                         </li>
@@ -69,7 +46,7 @@
                         <li>
                             <p>
                                 <span>姓名</span>
-                                <input type="text" id="name" placeholder="姓名" maxlength="20" >
+                                <input type="text" id="name" placeholder="姓名" name="name" maxlength="20" >
                                 <span id="nameTip" class="prompt"></span>
                             </p>
                         </li>
@@ -81,14 +58,14 @@
                         <li>
                             <p>
                                 <span>生日</span>
-                                <input type="text" id="birthday" placeholder="生日"  >
+                                <input type="text" id="birthday" placeholder="生日"  name="birthday">
                                 <span id="birthdayTip" class="prompt"></span>
                             </p>
                         </li>
 
                         <li>
                             <span>婚姻状态</span>
-                            <input type="radio" name="marray" id="n"  value='n' class="choose" checked/>未婚<input type="radio" name="marray" id="y"  value='y' class="choose"/>已婚
+                            <input type="radio" name="marry" id="n"  value='n' class="choose" checked/>未婚<input type="radio" name="marry" id="y"  value='y' class="choose"/>已婚
 
                         </li>
 
@@ -96,7 +73,7 @@
                             <p>
                                 <span>证件类型</span>
                                <select name="cardType" class="select">
-                                   <option value="card">身份证</option>
+                                   <option value="IDCard">身份证</option>
                                </select>
                             </p>
                         </li>
@@ -104,21 +81,21 @@
                         <li>
                             <p>
                                 <span>证件号</span>
-                                <input type="text" id="card" placeholder="证件号"  >
+                                <input type="text" name="card" id="card" placeholder="证件号"  >
                                 <span id="cardTip" class="prompt"></span>
                             </p>
                         </li>
                         <li>
                             <p>
                                 <span>邮箱</span>
-                                <input type="text" id="mail" placeholder="邮箱"  >
+                                <input type="text" id="mail" name="mail" placeholder="邮箱"  >
                                 <span id="mailTip" class="prompt"></span>
                             </p>
                         </li>
                         <li>
                             <p>
                                 <span>手机号码</span>
-                                <input type="text" id="mobile" placeholder="手机号码"  >
+                                <input type="text" id="mobile" name="mobile" placeholder="手机号码"  >
                                 <span id="mobileTip" class="prompt"></span>
                             </p>
                         </li>
@@ -127,7 +104,7 @@
                             <a id="btnRegister" style="cursor: pointer;" onclick="register()">注册</a>
                         </li>
                     </ul>
-
+                    </form>
                 </div>
                 <div class="mem_register_pic fr">
                     <p>
@@ -236,9 +213,8 @@
             return;
         }
 
-        $("input[@type=radio][name=sex][@value='f']").attr("checked",true);
-        $("input[@type=radio][name=marray][@value='f']").attr("checked",true);
 
+        $("#form_reg").submit();
     }
 
 

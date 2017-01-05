@@ -8,9 +8,9 @@ class User extends Base
     public function login()
     {
         if($this->isLogin()){
-            return $this->ajaxSuccess();
+            return $this->fetch();
         }
-        $data = $this->request->post();
+        $data = $_POST;
 
         if(empty($data)){
            return $this->fetch();
@@ -22,24 +22,27 @@ class User extends Base
         }
         $isUser = $userSer->checkUser($data['userName'],$data['password']);
         if(!$isUser){
-            return $this->ajaxFail('用户名或者密码错误');
+            return $this->error('用户名或者密码错误');
         }
         $this->userLogin($data);
-        return $this->ajaxSuccess();
+        return $this->success('登录成功','/examination/public');
     }
 
     public function register()
     {
         $data = $_POST;
         if(empty($data))  return $this->fetch();
+//        var_dump($data);die;
         $userSer = new UserService();
+        $isUser = $userSer->checkUser($data['user_name']);
+        if($isUser) return $this->error('用户名已存在','user/login');
         $res = $userSer->add($data);
         if($res){
-            $user['userName'] = $data['userName'];
+            $user['user_name'] = $data['user_name'];
             $user['password'] = md5($data['password']);
             $this->userLogin($user);
-            return $this->fetch('index/index');
+            return $this->success('注册成功','/examination/public');
         }
-
+        return $this->error('注册失败');
     }
 }

@@ -95,26 +95,7 @@
             $("#password").focus();
             return;
         }
-        $.ajax({
-            type:"POST",
-            contentType:"application/json",
-            url:"/examination/public/login",
-            data:{
-                'userName':userName,
-                'password':password
-            },
-            dataType:'json',
-            success:function(result){
-                alert(result);
-                if(result.state == 1){
-                    window.location = '/examination/public';
-                }
-                alert(result.msg);
-                return;
-//              window.location('/examination/public');
-            }
-        });
-//        $("#form").submit();
+        $("#form").submit();
 
     }
 
