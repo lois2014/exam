@@ -1,0 +1,167 @@
+{include file="/common/head"}
+
+<body>
+<link href="../public/static/css/member_style.css" rel="stylesheet" />
+<div class="topbox">
+    <!--顶部-->
+    {include file="/common/top"}
+    <!---->
+    <!--头部-->
+    {include file="/common/header"}
+    <!---->
+</div>
+<div class="content">
+    <div class="mem_login_all">
+        <div class="mem_body login_layout">
+            <div class="mem_login_pic fl">
+                <img src="/pageTest/img/login_pic.png" width="569" height="469">
+            </div>
+            <div class="mem_login fr">
+                <div class="mem_login_title">
+                    <h3>会员登录</h3>
+                    <a href="/examination/public/register">新用户注册</a>
+                </div>
+                <div class="error_message" id="error" style="display: none"></div>
+                <form id="form" action="/examination/public/login" method="post">
+                <ul>
+                    <li>
+                        <input type="text" id="userName" placeholder="用户名" name="userName" maxlength="20" >
+                    </li>
+                    <li>
+                        <input type="password" id="password" name="password" placeholder="密码" maxlength="20">
+                    </li>
+                    <li>
+                      <a onclick="checkout()" id="btnLogin" style="cursor: pointer;">登录</a>
+                    </li>
+                </ul>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="foot">
+    <div class="footer_tips">
+
+    </div>
+    <div class="footer">
+        <p>
+            康康体检网，个性化体检定制与预约一站式服务平台。深圳市迈康信息技术有限公司 400-1000-920
+            <br>
+            Copyright(C)2010-2015康康体检网版权所有  工信部备案号:粤ICP备11060749号-8
+        </p>
+    </div>
+</div>
+<script>
+
+    function checkout(){
+
+        $("#error").attr("style","display: none");
+        $("#error").text("");
+
+        var userName = $.trim($("#userName").val());
+        var password = $.trim($("#password").val());
+        if(userName == ''){
+            $("#error").attr("style","display: block");
+            $("#error").text("请输入用户名");
+            $("#userName").focus();
+            return;
+        }
+
+        if(password == ''){
+            $("#error").attr("style","display: block");
+            $("#error").text("请输入密码");
+            $("#password").focus();
+            return;
+        }
+
+        if(userName.length < 2 || userName.length > 20){
+            $("#error").attr("style","display: block");
+            $("#error").text("用户名要求2~20位");
+            $("#userName").focus();
+            return;
+        }
+
+        if(password.length > 20 || password.length < 6){
+            $("#error").attr("style","display: block");
+            $("#error").text("密码要求6~20位(不含空白字符)");
+            $("#password").focus();
+            return;
+        }
+
+        if(password != password.replace(/\s/g,"")){
+            $("#error").attr("style","display: block");
+            $("#error").text("密码不能含空白字符");
+            $("#password").focus();
+            return;
+        }
+        $.ajax({
+            type:"POST",
+            contentType:"application/json",
+            url:"/examination/public/login",
+            data:{
+                'userName':userName,
+                'password':password
+            },
+            dataType:'json',
+            success:function(result){
+                alert(result);
+                if(result.state == 1){
+                    window.location = '/examination/public';
+                }
+                alert(result.msg);
+                return;
+//              window.location('/examination/public');
+            }
+        });
+//        $("#form").submit();
+
+    }
+
+
+</script>
+</body>
+
+<script>
+    $(function() {
+         function checkout(){
+            var userName = $.trim($("#userName").val());
+            var password = $.trim($("#password").val());
+            if(userName == ''){
+                $("#error").attr("style","display: block");
+                $("#error").text("请输入用户名");
+                $("#userName").focus();
+                return;
+            }
+
+            if(password == ''){
+                $("#error").attr("style","display: block");
+                $("#error").text("请输入密码");
+                $("#password").focus();
+                return;
+            }
+
+            if(userName.length < 2 || userName.length > 20){
+                $("#error").attr("style","display: block");
+                $("#error").text("用户名要求2~20位");
+                $("#userName").focus();
+                return;
+            }
+
+            if(password.length > 20 || password.length < 6){
+                $("#error").attr("style","display: block");
+                $("#error").text("密码要求6~20位(不含空白字符)");
+                $("#password").focus();
+                return;
+            }
+
+            if(password != password.replace(/\s/g,"")){
+                $("#error").attr("style","display: block");
+                $("#error").text("密码不能含空白字符");
+                $("#password").focus();
+                return;
+            }
+
+        }
+    });
+</script>
