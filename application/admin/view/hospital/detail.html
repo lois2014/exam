@@ -1,0 +1,123 @@
+{include file="/common/head"}
+
+    <link href="../asset/css/colorpicker.css" rel="stylesheet">
+    <link href="../asset/css/datepicker.css" rel="stylesheet">
+    <link href="../asset/css/timepicker.css" rel="stylesheet">
+    <link href="../asset/css/select2.css" rel="stylesheet">
+<body>
+<div id="wrap">
+  {include file="/common/top"}
+
+    <div class="container-fluid">
+
+        <!-- Side menu -->
+        {include file="/common/nav"}
+        <!-- /Side menu -->
+
+        <!-- Main window -->
+        <div class="main_container" id="forms_page">
+            <div class="row-fluid">
+                <div class="widget widget-padding span12">
+                    <div class="widget-header">
+                        <i class="icon-list-alt"></i><h5>机构</h5>
+                        <div class="widget-buttons">
+                            <a href="#" data-title="Collapse" data-collapsed="false" class="tip collapse"><i class="icon-chevron-up"></i></a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-forms clearfix">
+                            <form class="form-horizontal" action="/examination/public/admin/hospitalEdit" method="post">
+                                <input type="hidden" value="{$hospital.id}" name="id">
+                                <div class="control-group">
+                                    <label class="control-label">机构名称</label>
+                                    <div class="controls">
+                                        <input class="span7" type="text" placeholder="" name="name" value="{$hospital.name}">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">机构地址</label>
+                                    <div class="controls">
+                                        <input class="span7" type="text" placeholder="" name="address" value="{$hospital.address}">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">预约时间</label>
+                                    <div class="controls">
+                                        <input class="span7" type="text" placeholder="" name="avaliable_time" value="{$hospital.avaliable_time}">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">是否显示</label>
+                                    <div class="controls">
+                                        <select tabindex="1" data-placeholder="" class="span7" name="display">
+                                            <option value=""></option>
+                                            {if $hospital.dispaly == 1}
+                                            <option value="1" selected>显示</option>
+                                            <option value="2">不显示</option>
+                                            {else}
+                                            <option value="1" >显示</option>
+                                            <option value="2" selected>不显示</option>
+                                            {/if}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">机构级别</label>
+                                    <div class="controls">
+                                        <input class="span7" type="text" placeholder="" name="level" value="{$hospital.level}">
+                                        <span class="help-inline"></span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">机构简介</label>
+                                    <div class="controls">
+                                        <textarea class="span7" rows="5" style="height:100px;" name="description">{$hospital.description}</textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <button class="btn btn-primary" type="submit" onclick="save();">保存</button>
+                        <button class="btn" type="button" onclick="javascript:window.history.back()">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Main window -->
+
+    </div><!--/.fluid-container-->
+</div><!-- wrap ends-->
+
+<script type="text/javascript" src="../asset/js/jquery.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../asset/js/raphael-min.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap.js"></script>
+<script type="text/javascript" src='../asset/js/sparkline.js'></script>
+<script type="text/javascript" src='../asset/js/morris.min.js'></script>
+<script type="text/javascript" src="../asset/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.imagesloaded.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.facybox.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.alertify.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.knob.js"></script>
+<script type='text/javascript' src='../asset/js/fullcalendar.min.js'></script>
+<script type='text/javascript' src='../asset/js/jquery.gritter.min.js'></script>
+<script type="text/javascript" src="../asset/js/realm.js"></script>
+
+<script type="text/javascript" src="../asset/js/select2.min.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap-timepicker.js"></script>
+</body>
+<script>
+    function save()
+    {
+        $('.form-horizontal').submit();
+    }
+</script>

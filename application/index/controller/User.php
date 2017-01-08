@@ -24,6 +24,8 @@ class User extends Base
         if(!$isUser){
             return $this->error('用户名或者密码错误');
         }
+        $user['password'] = $data['password'];
+        $user['user_name'] = $data['userName'];
         $this->userLogin($data);
         return $this->success('登录成功','/examination/public');
     }
@@ -35,7 +37,7 @@ class User extends Base
 //        var_dump($data);die;
         $userSer = new UserService();
         $isUser = $userSer->checkUser($data['user_name']);
-        if($isUser) return $this->error('用户名已存在','user/login');
+        if($isUser) return $this->error('用户名已存在','examination/public/login');
         $res = $userSer->add($data);
         if($res){
             $user['user_name'] = $data['user_name'];
@@ -44,5 +46,14 @@ class User extends Base
             return $this->success('注册成功','/examination/public');
         }
         return $this->error('注册失败');
+    }
+
+    public function getUser(){
+        $user = $this->getUserInfo();
+//        var_dump($user);die;
+        if(!$user){
+            return $this->ajaxFail('未登录');
+        }
+        return $this->ajaxSuccess($user);
     }
 }

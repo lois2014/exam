@@ -40,65 +40,67 @@
             <div class="left">
                 <div class="left_top clearfix">
                     <p>找机构</p>
-                    <span>快速预约杭州74家体检中心</span>
+                    <!--<span>快速预约杭州74家体检中心</span>-->
                 </div>
                 <div class="left_select">
-                    <div class="city_select" data-bind="">杭州</div>
-                    <div class="li">
-                        <div class="btn">
-                            <span id="qy_value">请选择区域</span><i></i>
-                        </div>
-                        <ul id="qy" class="hide">
-                            <li data-bind="">江干区</li>
-                            <li data-bind="">江干区</li>
-                        </ul>
-                    </div>
-                    <div class="li">
-                        <div class="btn">
-                            <span id="jglxvalue">请选择机构等级</span><i></i>
-                        </div>
-                        <ul id="jglx" class="hide" data-bind="">
-                            <li data-bind="">等级1</li>
-                            <li data-bind="">等级2</li>
-                            <li data-bind="">等级3</li>
-                        </ul>
-                    </div>
-                    <div class="li">
-                        <div class="btn">
-                            <span id="jgvalue">请选择机构</span><i></i>
-                        </div>
-                        <ul id="jg" class="hide" data-bind="" >
-                            <li data-bind="">机构1</li>
-                            <li data-bind="">机构2</li>
-                            <li data-bind="">机构3</li>
-                        </ul>
-                    </div>
-                    <div id="btn_Org_Search" class="submit">快速预约</div>
+                    <!--<div class="city_select" data-bind="">杭州</div>-->
+                    <!--<div class="li">-->
+                        <!--<div class="btn">-->
+                            <!--<span id="qy_value">请选择区域</span><i></i>-->
+                        <!--</div>-->
+                        <!--<ul id="qy" class="hide">-->
+                            <!--<li data-bind="">江干区</li>-->
+                            <!--<li data-bind="">江干区</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="li">-->
+                        <!--<div class="btn">-->
+                            <!--<span id="jglxvalue">请选择机构等级</span><i></i>-->
+                        <!--</div>-->
+                        <!--<ul id="jglx" class="hide" data-bind="">-->
+                            <!--<li data-bind="">等级1</li>-->
+                            <!--<li data-bind="">等级2</li>-->
+                            <!--<li data-bind="">等级3</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div class="li">-->
+                        <!--<div class="btn">-->
+                            <!--<span id="jgvalue">请选择机构</span><i></i>-->
+                        <!--</div>-->
+                        <!--<ul id="jg" class="hide" data-bind="" >-->
+                            <!--<li data-bind="">机构1</li>-->
+                            <!--<li data-bind="">机构2</li>-->
+                            <!--<li data-bind="">机构3</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div id="btn_Org_Search" class="submit">快速预约</div>-->
                 </div>
 
             </div>
             <div id="jglist" class="right">
                 <ul class="clearfix">
+                    {volist name="hospitals" id="hospital"}
                     <li>
-                        <a class="clearfix" href="#" target="_blank">
+                        <a class="clearfix" href='/examination/public/hospital_detail?id={$hospital.id}' target="_blank">
                             <div class="imgbox">
-                                <img src="../public/static/img/example01.PNG">
+                                <img src='..{$hospital.picture}'>
                                 <!--<p>需提前<span name="tpts">4天</span>预约</p>-->
                             </div>
-                            <h4>浙江大学医学院附属第一医院体检中心</h4>
+                            <h4>{$hospital.name}</h4>
                             <p class="p01">
-                                <span>公立三甲</span>
-                                <i>上城区</i>
+                                <span>{$hospital.level}</span>
+                                <i></i>
                             </p>
                             <div class="p02">
-                                体检套餐:<em>12个</em>
+                                体检套餐:<em>{$hospital.package_num}个</em>
                                 <div>
-                                    预约人数:<em>1383</em>
+                                    预约人数:<em>{$hospital.people_num}</em>
                                 </div>
                             </div>
 
                         </a>
                     </li>
+                    {/volist}
                 </ul>
             </div>
         </div>
@@ -110,148 +112,95 @@
         <div class="clearfix">
             <div class="left">
                 <div class="left_top clearfix">
-                    <p>找套餐</p>
-                    <span>共369个套餐</span>
+                    <!--<p>找套餐</p>-->
+                    <!--<span>共369个套餐</span>-->
                 </div>
                 <div class="left_select">
                     <div class="li">
-                        <div class="btn">
-                            <span id="tclbvalue">请选择套餐类别</span>
-                            <i></i>
-                        </div>
-                        <ul id="tclb" class="hide">
-                            <li value="2">常规体检1</li>
-                            <!--<li value="3">常规体检2</li>-->
-                            <!--<li value="4">常规体检3</li>-->
-                            <!--<li value="5">常规体检4</li>-->
-                            <!--<li value="6">常规体检5</li>-->
-                            <!--<li value="7">常规体检6</li>-->
-                        </ul>
+                        <!--<div class="btn">-->
+                            <!--&lt;!&ndash;<span id="tclbvalue">请选择套餐类别</span>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<i></i>&ndash;&gt;-->
+                        <!--</div>-->
+                        <!--<ul id="tclb" class="hide">-->
+                            <!--&lt;!&ndash;<li value="2">常规体检1</li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li value="3">常规体检2</li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li value="4">常规体检3</li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li value="5">常规体检4</li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li value="6">常规体检5</li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li value="7">常规体检6</li>&ndash;&gt;-->
+                        <!--</ul>-->
                     </div>
                     <div class="li">
-                        <div class="btn">
-                            <span id="pricevalue">请选择价格范围</span>
-                            <i></i>
-                        </div>
-                        <ul id="price" class="hide">
-                            <li value="2">price1</li>
-                            <li value="3">price2</li>
-                            <li value="4">price3</li>
-                            <li value="5">price4</li>
-                            <li value="6">price5</li>
-                            <li value="7">price6</li>
-                        </ul>
+                        <!--<div class="btn">-->
+                            <!--<span id="pricevalue">请选择价格范围</span>-->
+                            <!--<i></i>-->
+                        <!--</div>-->
+                        <!--<ul id="price" class="hide">-->
+                            <!--<li value="2">price1</li>-->
+                            <!--<li value="3">price2</li>-->
+                            <!--<li value="4">price3</li>-->
+                            <!--<li value="5">price4</li>-->
+                            <!--<li value="6">price5</li>-->
+                            <!--<li value="7">price6</li>-->
+                        <!--</ul>-->
                     </div>
                     <div class="sex clearfix">
-                        <samp>性别:</samp>
-                        <p>
-                            <input name="gender" value="0" type="hidden">
-                            <label class="sex_radios">
-                                <i class="select">&nbsp;</i>
-                                不限
-                            </label>
-                            <label class="sex_radios">
-                                <i class="unselect">&nbsp;</i>
-                                男
-                            </label>
-                            <label class="sex_radios">
-                                <i class="unselect">&nbsp;</i>
-                                女
-                            </label>
-                        </p>
+                        <!--<samp>性别:</samp>-->
+                        <!--<p>-->
+                            <!--<input name="gender" value="0" type="hidden">-->
+                            <!--<label class="sex_radios">-->
+                                <!--<i class="select">&nbsp;</i>-->
+                                <!--不限-->
+                            <!--</label>-->
+                            <!--<label class="sex_radios">-->
+                                <!--<i class="unselect">&nbsp;</i>-->
+                                <!--男-->
+                            <!--</label>-->
+                            <!--<label class="sex_radios">-->
+                                <!--<i class="unselect">&nbsp;</i>-->
+                                <!--女-->
+                            <!--</label>-->
+                        <!--</p>-->
                     </div>
-                    <div id="btn_pkg_search" class="submit">快速预约</div>
+                    <!--<div id="btn_pkg_search" class="submit">快速预约</div>-->
                 </div>
             </div>
             <input id="tclistClickTCID" type="hidden" name="TCID">
             <div class="right">
                 <ul class="clearfix">
+                    {volist name="packages" id="package"}
                     <li>
                         <div class="clearfix">
                             <div class="imgbox">
-                                <a href="#" target="_blank">
-                                    <img src="../public/static/img/face_tc.jpg">
+                                <a href="/examination/public/package_detail?id={$package.id}" target="_blank">
+                                    <img src='..{$package.picture}'>
                                 </a>
                             </div>
-                            <a href="#" target="_blank">
-                                <h4>老年男套餐</h4>
+                            <a href="/examination/public/package_detail?id={$package.id}" target="_blank">
+                                <h4>{$package.name}</h4>
                             </a>
                             <p class="p01">
-                                <span>第一健康体检中心杭州分院</span>
-                                <i>江干区</i>
+                                <span>{$package.hospital.name}</span>
+                                <!--<i>江干区</i>-->
                             </p>
                             <div class="p02 clearfix"></div>
                             <div class="priceinfo clearfix">
-                                <div>销量: 157</div>
+                                <div>销量: {$package.sale_num}</div>
                                 <b>
-                                    ￥<strong>2594</strong>
+                                    ￥<strong>{$package.price}</strong>
                                 </b>
-                                <s>原价: ￥4305</s>
+                                <s>原价: ￥{$package.old_price}</s>
                             </div>
                             <div class="p04 clearfix">
-                                <a href="javascript:void(0)" onclick="sub(this);">去购买</a>
+                                <a href="/examination/public/package_detail?id={$package.id}">去购买</a>
                             </div>
                         </div>
                     </li>
+                    {/volist}
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<div class="foot">
-    <div class="footer_tips">
-
-    </div>
-    <div class="footer">
-        <p>
-            康康体检网，个性化体检定制与预约一站式服务平台。深圳市迈康信息技术有限公司 400-1000-920
-            <br>
-            Copyright(C)2010-2015康康体检网版权所有  工信部备案号:粤ICP备11060749号-8
-        </p>
-    </div>
-</div>
+{include file="/common/foot"}
 </body>
-
-<script>
-    $(document).ready(function() {
-
-        var hrefSp = window.location.href.split("/");
-        if (hrefSp.length > 0) {
-            var pathName = window.location.pathname.toString().toLowerCase();
-            if(pathName.indexOf('package_list') > -1){
-                $(".nav_tc").siblings().removeClass('nav-on');
-                $(".nav_tc").addClass('nav_tc nav-on');
-            }else if(pathName.indexOf('organ_list') > -1){
-                $(".nav_jg").siblings().removeClass('nav-on');
-                $(".nav_jg").addClass('nav_jg nav-on');
-            }else{
-                $(".nav_index").siblings().removeClass('nav-on');
-                $(".nav_index").addClass('nav_index nav-on');
-            }
-
-        }
-
-        $("#index div.li").click(function () {
-            var doc = $(this);
-            var isClass = doc.hasClass('li dropdown_active');
-            if(!isClass){
-                var docs = $(document.getElementsByClassName('li'));
-                for(var i = 1;i<=docs.length;i++) {
-                    var cur = docs.valueOf(i);
-                    if(cur.hasClass('dropdown_active')) {
-                        cur.removeClass('dropdown_active');
-                        ul = cur.find("ul");
-                        ul.addClass('hide');
-                    }
-                }
-                doc.addClass('li dropdown_active');
-                var ul = doc.find("ul");
-                ul.removeClass('hide');
-            }else{
-                doc.removeClass('dropdown_active');
-                ul = doc.find("ul");
-                ul.addClass('hide');
-            }
-        });
-    })
-</script>

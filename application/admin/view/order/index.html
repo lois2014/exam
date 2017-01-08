@@ -1,0 +1,99 @@
+{include file="/common/head"}
+<body>
+<div id="wrap">
+
+    {include file="/common/top"}
+    <div class="container-fluid">
+        <!-- Side menu -->
+        {include file="/common/nav"}
+        <!-- /Side menu -->
+        <!-- Main window -->
+        <div class="main_container" id="users_page">
+            <div class="row-fluid">
+                <ul class="breadcrumb">
+                </ul>
+                <h2 class="heading">
+                    预约订单列表
+                    <div class="btn-group pull-right">
+                    </div>
+                </h2>
+            </div> <!-- /row-fluid -->
+
+            <div class="row-fluid">
+                <!-- /widget -->
+
+            </div> <!-- /row-fluid -->
+
+            <div class="row-fluid">
+                <div class="widget widget-padding span12">
+                    <div class="widget-header">
+                        <i class=" icon-list-alt"></i>
+                        <h5>订单</h5>
+                        <div class="widget-buttons">
+                        </div>
+                    </div>
+                    <div class="widget-body" style="overflow: hidden; display: block;">
+                        <div id="users_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <div class="row-fluid"><div class="span6"><div id="users_length" class="dataTables_length"> </div></div></div>
+                            <table id="users" class="table table-striped table-bordered dataTable" aria-describedby="users_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 191px;">订单编号</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 150px;">预约时间</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 150px;">预约人</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 150px;">手机号码</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 150px;">预约套餐</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 150px;">预约机构</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 150px;">预约数量</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 150px;">价格</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 235px;">下单时间</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 186px;">状态</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1"  style="width: 186px;">操作</th>
+                            </tr>
+                            </thead>
+
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            {volist name="list" id="app"}
+                            <div class="">
+                                <td class=" ">{$app.order_no}</td>
+                                <td class=" ">{$app.appointment_time}</td>
+                                <td class=" ">{$app.user}</td>
+                                <td class=" ">{$app.mobile}</td>
+                                <td class=" ">{$app.pack_name}</td>
+                                <td class=" ">{$app.orga_name}</td>
+                                <td class=" ">{$app.num}</td>
+                                <td class=" ">{$app.price}</td>
+                                <td class=" ">{$app.create_time}</td>
+                                <td class=" ">{$app.status?'成功':'取消'}</td>
+                                <td class=" ">
+                                    <div class="btn-group">
+                                    <a class="btn btn-small" href="/examination/public/admin/packageDetail?id={$app.pack_id}">套餐详情</a><br><a class="btn btn-small" href="/examination/public/admin/hospitalDetail?id={$app.orga_id}">机构详情</a>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            {/volist}
+                            </tbody>
+                            </table>
+
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="dataTables_info" id="users_info">
+                                    </div>
+                                </div><div class="span6">
+                                <div class="dataTables_paginate paging_bootstrap pagination">
+                                    {$page}
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div> <!-- /widget-body -->
+                </div> <!-- /widget -->
+            </div> <!-- /row-fluid -->
+
+        </div>
+        <!-- /Main window -->
+
+    </div>
+</div>
+</body>

@@ -1,0 +1,247 @@
+{include file="/common/head"}
+
+    <link href="../asset/css/colorpicker.css" rel="stylesheet">
+    <link href="../asset/css/datepicker.css" rel="stylesheet">
+    <link href="../asset/css/timepicker.css" rel="stylesheet">
+    <link href="../asset/css/select2.css" rel="stylesheet">
+<body>
+<div id="wrap">
+  {include file="/common/top"}
+
+    <div class="container-fluid">
+
+        <!-- Side menu -->
+        {include file="/common/nav"}
+        <!-- /Side menu -->
+
+        <!-- Main window -->
+        <div class="main_container" id="forms_page">
+            <div class="row-fluid">
+                <div class="widget widget-padding span12">
+                    <div class="widget-header">
+                        <i class="icon-list-alt"></i><h5>套餐</h5>
+                        <div class="widget-buttons">
+                            <a href="#" data-title="Collapse" data-collapsed="false" class="tip collapse"><i class="icon-chevron-up"></i></a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-forms clearfix">
+                            <form class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label">Basic Input</label>
+                                    <div class="controls">
+                                        <input class="span7" type="text" placeholder="Type something…">
+                                        <span class="help-inline">Helpful text here.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Disabled Input</label>
+                                    <div class="controls">
+                                        <input class="span7" disabled="" type="text" placeholder="You can't type anything…">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Tooltip Input</label>
+                                    <div class="controls">
+                                        <input class="span7 tip" data-title="A tooltip for the input" type="text" placeholder="Hover for tooltip…">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Popover Input</label>
+                                    <div class="controls">
+                                        <input class="span7 pop" data-title="A popover for the input" data-content="Place some more information about the input here" type="text" placeholder="Click for popup…">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Type ahead Input</label>
+                                    <div class="controls">
+                                        <input class="span7" type="text" data-source="[&quot;Alabama&quot;,&quot;Alaska&quot;,&quot;Arizona&quot;,&quot;Arkansas&quot;,&quot;California&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]" data-items="4" data-provide="typeahead" style="margin: 0 auto;" placeholder="Type here for auto complete…">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Prepended Input</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on">#</span><input class="span7" type="text" placeholder="prepend">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Appended Input</label>
+                                    <div class="controls">
+                                        <div class="input-append">
+                                            <input class="span7" type="text" placeholder="5.000"><span class="add-on">$</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Dropdown Button</label>
+                                    <div class="controls">
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">Dropdown Button <i class="icon-caret-down"></i></a>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <li><a href="#">First Dropdown</a></li>
+                                                <li><a href="#">Second Dropdown</a></li>
+                                                <li><a href="#">Third Dropdown</a></li>
+                                                <li><a href="#">Fourth Dropdown</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Dropdown</label>
+                                    <div class="controls">
+                                        <select tabindex="1" data-placeholder="Select here.." class="span7">
+                                            <option value=""></option>
+                                            <option value="Category 1">First Dropdown</option>
+                                            <option value="Category 2">Second Dropdown</option>
+                                            <option value="Category 3">Third Dropdown</option>
+                                            <option value="Category 4">Fourth Dropdown</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Advanced Dropdown</label>
+                                    <div class="controls">
+                                        <select tabindex="1" data-placeholder="Select here.." class="span7">
+                                            <option value=""></option>
+                                            <optgroup label="First and second">
+                                                <option value="Category 1">First Dropdown</option>
+                                                <option value="Category 1">Second Dropdown</option>
+                                            </optgroup>
+                                            <optgroup label="Third, fourth and fifth">
+                                                <option value="Category 2">Third Dropdown</option>
+                                                <option value="Category 2">Fourth Dropdown</option>
+                                                <option value="Category 2">Fifth Dropdown</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Custom Dropdown</label>
+                                    <div class="controls">
+                                        <select id="select2-basic" tabindex="1" data-placeholder="Select here.." class="span7">
+                                            <option value=""></option>
+                                            <!--<optgroup label="First and second">-->
+                                                <option value="Category 1">First Dropdown</option>
+                                                <option value="Category 2">Second Dropdown</option>
+                                            <!--</optgroup>-->
+                                            <!--<optgroup label="Third, fourth and fifth">-->
+                                                <option value="Category 3">Third Dropdown</option>
+                                                <option value="Category 4">Fourth Dropdown</option>
+                                                <option value="Category 5">Fifth Dropdown</option>
+                                            <!--</optgroup>-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Multi-Value Dropdown</label>
+                                    <div class="controls">
+                                        <select id="select2-multi-value" multiple="" class="span7">
+                                            <option></option>
+                                            <optgroup label="First and second">
+                                                <option value="Category 1">First Dropdown</option>
+                                                <option value="Category 2">Second Dropdown</option>
+                                            </optgroup>
+                                            <optgroup label="Third, fourth and fifth">
+                                                <option value="Category 3">Third Dropdown</option>
+                                                <option value="Category 4">Fourth Dropdown</option>
+                                                <option value="Category 5">Fifth Dropdown</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Max-Value Dropdown</label>
+                                    <div class="controls">
+                                        <select id="select2-max-value" multiple="" class="span7">
+                                            <option></option>
+                                            <optgroup label="">
+                                                <option value="Category 1">First Dropdown</option>
+                                                <option value="Category 2">Second Dropdown</option>
+                                            </optgroup>
+                                            <!--<optgroup label="Third, fourth and fifth">-->
+                                                <option value="Category 3">Third Dropdown</option>
+                                                <option value="Category 4">Fourth Dropdown</option>
+                                                <option value="Category 5">Fifth Dropdown</option>
+                                            <!--</optgroup>-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Tags Dropdown</label>
+                                    <div class="controls">
+                                        <input id="select2-tags" multiple="" class="span7">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Color Picker</label>
+                                    <div class="controls">
+                                        <div class="input-append color span5 colorpicker colorpicker-rgb" data-color="rgb(255, 146, 180)" data-color-format="rgb">
+                                            <input type="text" value="">
+                                            <span class="add-on"><i style="background-color: rgb(255, 146, 180)"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Date Picker</label>
+                                    <div class="controls">
+                                        <div class="input-append date span5 datepicker datepicker-basic" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                                            <input size="16" type="text" value="12-02-2012">
+                                            <span class="add-on"><i class="icon-th"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Time Picker</label>
+                                    <div class="controls">
+                                        <div class="input-append bootstrap-timepicker-component span5">
+                                            <input type="text" class="input-small timepicker-12hrs">
+                                            <span class="add-on">
+                            <i class="icon-time"></i>
+                          </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Text Area</label>
+                                    <div class="controls">
+                                        <textarea class="span7" rows="5" style="height:100px;"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button class="btn" type="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Main window -->
+
+    </div><!--/.fluid-container-->
+</div><!-- wrap ends-->
+
+<script type="text/javascript" src="../asset/js/jquery.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../asset/js/raphael-min.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap.js"></script>
+<script type="text/javascript" src='../asset/js/sparkline.js'></script>
+<script type="text/javascript" src='../asset/js/morris.min.js'></script>
+<script type="text/javascript" src="../asset/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.imagesloaded.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.facybox.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.alertify.min.js"></script>
+<script type="text/javascript" src="../asset/js/jquery.knob.js"></script>
+<script type='text/javascript' src='../asset/js/fullcalendar.min.js'></script>
+<script type='text/javascript' src='../asset/js/jquery.gritter.min.js'></script>
+<script type="text/javascript" src="../asset/js/realm.js"></script>
+
+<script type="text/javascript" src="../asset/js/select2.min.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap-timepicker.js"></script>
+</body>

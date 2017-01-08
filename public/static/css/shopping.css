@@ -1,0 +1,256 @@
+.personalinfo>div {
+    margin: 20px 0;
+}
+
+.information>h1 {
+    font-size: 16px;
+    font-family: "microsoft yahei";
+    font-weight: normal;
+    text-indent: 5px;
+    margin-top: 30px;
+    color: #6e6e6f;
+}
+
+.information .personalinfo {
+    border-top: 1px solid #dbdbdb;
+}
+
+.information>div {
+    border: 1px solid #dbdbdb;
+    border-top: none;
+    padding-left: 20px;
+    padding-top: 25px;
+    color: #6e6e6f;
+    font-size: 14px;
+    padding-right: 20px;
+}
+
+.personalinfo>div span {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.personalinfo>div span i {
+    position: relative;
+    top: 3px;
+    color: #f00;
+    font-weight: 800;
+}
+
+.information input {
+    height: 29px;
+    width: 169px;
+    margin-right: 20px;
+    padding-right: 30px;
+    padding-left: 10px;
+    outline: 0;
+    line-height: 20px;
+    font-size: 16px;
+    vertical-align: middle;
+    border: 1px solid rgb(219, 219, 219);
+}
+
+.payway p {
+    padding-top: 20px;
+    color: #6e6e6f;
+    font-size: 12px;
+    margin-bottom: 20px;
+    height: 34px;
+    line-height: 34px;
+    vertical-align: middle;
+    font-family: "microsoft yahei";
+    position: relative;
+}
+
+.payway p a.active {
+    background: url(../img/pay_bg_select.png) no-repeat;
+}
+.payway p a {
+    float: left;
+    margin-right: 50px;
+    height: 34px;
+    width: 101px;
+    line-height: 34px;
+    vertical-align: middle;
+    text-align: center;
+    background: url(../img/pay_bg.png) no-repeat;
+    color: #6e6e6f;
+    font-size: 12px;
+}
+
+.shopgroup .grouphead {
+    position: relative;
+    margin-top: 20px;
+    padding: 16px;
+    text-align: right;
+    border: 1px solid #dbdbdb;
+}
+
+.shopgroup ul li.shopimg img {
+    border: 1px solid #dbdbdb;
+}
+
+.shopgroup .grouphead p {
+    width: 290px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6e6e6f;
+}
+
+.shopgroup .grouphead span {
+    margin-right: 130px;
+    color: #6e6e6f;
+    border: 0px solid red;
+}
+
+.shopgroup .grouphead span.last {
+    margin-right: 30px;
+    padding-right: 10px;
+}
+
+
+.shopgroup ul {
+    border: 1px solid #dbdbdb;
+    background-color: #f6f6f6;
+    border-top: none;
+}
+
+.shopgroup ul li.shopimg {
+    width: 150px;
+    padding: 20px;
+}
+
+.shopgroup ul li.textcontent {
+    margin-top: 25px;
+    width: 315px;
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+.shopgroup ul li {
+    float: left;
+}
+
+
+.shopgroup li.textcontent p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+}
+
+
+.shopgroup ul li.price, .shopgroup ul li.number, .shopgroup ul li.count, .shopgroup ul li.zhichiway {
+    margin-top: 50px;
+    width: 160px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.shopgroup ul li.zhichiway p {
+    line-height: 1.8;
+    font-weight: normal;
+    text-indent: 10px;
+}
+
+.realpay div.submitbtn, .realpay div.moneytext {
+    float: right;
+    height: 57px;
+    line-height: 57px;
+    vertical-align: middle;
+    margin-left: 20px;
+    font-size: 24px;
+}
+.realpay .submitbtn {
+    background-color: #e54346;
+    color: #fff;
+    padding: 0 10px;
+}
+
+
+.realpay .moneytext b {
+    color: #f00;
+}
+
+.ordertip {
+    margin-top: 30px;
+    border: 1px solid #dbdbdb;
+    background-color: #f6f4f4;
+    padding: 30px 70px;
+}
+
+.ordertip .ordersuccess {
+    float: left;
+}
+
+.ordertip .ordersuccess span {
+    font-weight: normal;
+    color: #4b4643;
+}
+
+.ordertip .ordersuccess p {
+    margin-left: 50px;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.ordertip .ordersuccess>p>i {
+    font-weight: bold;
+}
+
+.ordertip .ordersuccess span {
+    font-weight: normal;
+    color: #4b4643;
+}
+
+.ordertip .ordersuccess p {
+    margin-left: 50px;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.ordertip .ordersuccess p b {
+    color: #f00;
+    font-weight: normal;
+}
+
+.ordertip .orderallinfo {
+    float: right;
+    font-size: 16px;
+    height: 33px;
+    padding-top: 10px;
+}
+
+.ordertip .orderallinfo span b {
+    color: #f00;
+}
+
+.ordertip .orderallinfo a {
+    color: #019eeb;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.ordertime {
+    margin-top: 30px;
+    background-color: #fdfbff;
+    padding: 30px 70px;
+    font-size: 20px;
+}
+
+.ordertime select {
+
+}

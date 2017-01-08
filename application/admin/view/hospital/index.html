@@ -1,0 +1,95 @@
+{include file="/common/head"}
+<body>
+<div id="wrap">
+
+    {include file="/common/top"}
+    <div class="container-fluid">
+
+        <!-- Side menu -->
+        {include file="/common/nav"}
+        <!-- /Side menu -->
+
+        <!-- Main window -->
+        <div class="main_container" id="users_page">
+
+            <div class="row-fluid">
+                <ul class="breadcrumb">
+                </ul>
+                <h2 class="heading">
+                    机构管理
+                    <div class="btn-group pull-right">
+                    </div>
+                </h2>
+            </div> <!-- /row-fluid -->
+            <div class="row-fluid">
+                <!-- /widget -->
+            </div> <!-- /row-fluid -->
+
+            <div class="row-fluid">
+                <div class="widget widget-padding span12">
+                    <div class="widget-header">
+                        <i class="icon-group"></i>
+                        <h5>机构</h5>
+                        <div class="widget-buttons">
+                            <a href="#" data-title="Add User" data-toggle="modal" data-target="#example_modal"><i class="icon-plus"></i></a>
+                            <!--<a href="#" data-title="Collapse" data-collapsed="false" class="collapse"><i class="icon-chevron-up"></i></a>-->
+                        </div>
+                    </div>
+                    <div class="widget-body" style="overflow: hidden; display: block;">
+                        <div id="users_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <div class="row-fluid"><div class="span6">
+                                <div id="users_length" class="dataTables_length"></div></div></div>
+                            <table id="users" class="table table-striped table-bordered dataTable" aria-describedby="users_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-sort="ascending" aria-label="User: activate to sort column descending" style="width: 191px;">机构名</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Group: activate to sort column ascending" style="width: 150px;">机构等级</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Group: activate to sort column ascending" style="width: 150px;">机构地址</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Registered: activate to sort column ascending" style="width: 235px;">机构预约量</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Registered: activate to sort column ascending" style="width: 235px;">机构套餐数</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Registered: activate to sort column ascending" style="width: 235px;">机构创建时间</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 186px;"> </th>
+                            </tr>
+                            </thead>
+
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            {volist name="list" id="hospital"}
+                            <tr class="">
+                                <td class="">{$hospital.name}</td>
+                                <td class=" ">{$hospital.level}</td>
+                                <td class=" ">{$hospital.address}</td>
+                                <td class=" ">{$hospital.people_num}</td>
+                                <td class=" ">{$hospital.package_num}</td>
+                                <td class=" ">{$hospital.create_time}</td>
+                                <td class=" ">
+                                    <div class="btn-group">
+                                        <a class="btn" data-toggle="dropdown" href="/examination/public/admin/hospitalEdit?id={$hospital.id}">
+                                            编辑
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                            </table>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="dataTables_info" id="users_info">
+                                    </div>
+                                </div><div class="span6">
+                                <div class="dataTables_paginate paging_bootstrap pagination">
+                                    {$page}
+                                </div>
+                            </div>
+                            </div>
+                        </div> <!-- /widget-body -->
+                        </div>
+                </div> <!-- /widget -->
+            </div> <!-- /row-fluid -->
+
+        </div>
+        <!-- /Main window -->
+
+    </div>
+</div><!-- wrap ends-->
+</body>

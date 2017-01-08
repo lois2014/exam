@@ -17,15 +17,15 @@ class Base extends Controller
 
     public function getUserInfo(){
         if($this->isLogin()){
-            return $_COOKIE['user'];
+            return Cookie::get('user');
         }
-        return false;
+        return [];
     }
 
     public function userLogin($user){
         if($this->isLogin()) return true;
-        $_COOKIE['user'] = $user;
 
+        Cookie::set('user',$user);
         return true;
     }
 

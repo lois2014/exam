@@ -1,0 +1,102 @@
+{include file="/common/head"}
+<script async>
+
+    function fp_ready(){
+        // setting custom defaults
+        Flatpickr.l10n.firstDayOfWeek = 1;
+
+        //Regular flatpickr
+        document.getElementById("flatpickr-tryme").flatpickr({
+            disable: [
+                function(date){
+                    return date.getDate();
+                }
+            ]
+        });
+
+        var id = $('#id').val();
+        $.ajax({
+            url:"/examination/public/getEnableTime?id="+id,
+            dataType:"json",
+            type:"GET",
+            contentType:"application/json",
+            success:function(result){
+                result = JSON.parse(result);
+                var date =result.data ;
+                if(result.state == 1 && date!=undefined && date!='') {
+                    document.getElementById("flatpickr-tryme").flatpickr({
+                        enable: date
+                    });
+                }
+            },
+            error:function(error){
+            }
+        });
+
+        fiscal.redraw();
+
+
+        // Date format
+        var fpInstance = new Flatpickr(document.createElement("input")),
+                formatOutput = document.getElementById("dateFormatOutput"),
+                now = new Date();
+
+        document.getElementById("dateFormatComposer").addEventListener("keyup", function(e){
+            formatOutput.textContent = fpInstance.formatDate(e.target.value, now);
+        });
+
+    }
+</script>
+
+<script async src="../public/timeselect/dist/flatpickr.js" onload="fp_ready()"></script>
+<script async src="../public/timeselect/assets/prettify.js?skin=none" onload="prettyPrint()"></script>
+<script async src="../public/timeselect/assets/table-of-contents.js"></script>
+<script async src="../public/timeselect/assets/themer.js"></script>
+<script async id="locale_script"></script>
+<script async src="../public/timeselect/assets/localizr.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../public/timeselect/assets/site.css">
+<link rel="stylesheet" id=cal_style type="text/css" href="../public/timeselect/dist/flatpickr.min.css">
+
+<body>
+<div class="topbox">
+    <!--顶部-->
+    {include file="/common/top"}
+    <!---->
+    <!--头部-->
+    {include file="/common/header"}
+    <!---->
+    <!--导航栏-->
+    {include file="/common/nav"}
+    <!---->
+    <link href="../public/static/css/order.css" rel="stylesheet" />
+    <link href="../public/static/css/shopping.css" rel="stylesheet" />
+</div>
+
+<div class="content">
+    <div class="shopping">
+        {include file="/common/shopping_nav"}
+        <div class=flex>
+
+            <div class="c-l">
+                <div class='wrapper'>
+                    <div class="example" data-desc="A basic datepicker" id="basic">
+                        预约时间：
+                        <p>
+                            <form action="/examination/public/orderTime" method="post" id="orderTime_form">
+                                <input type="hidden" value="{$id}" name="id" id="id">
+                                <input id="flatpickr-tryme" placeholder="选择预约时间" name="appointment_time" value="">
+                                <button class="btn" onclick="">提交</button>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+{include file="/common/foot"}
+</body>
+<script type="text/javascript" src="../public/static/js/common.js"></script>
+<script type="text/javascript" src="../public/static/js/order.js"></script>
+

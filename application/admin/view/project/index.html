@@ -1,0 +1,150 @@
+{include file="/common/head"}
+<body>
+<div id="wrap">
+
+    {include file="/common/top"}
+    <div class="container-fluid">
+
+        <!-- Side menu -->
+        {include file="/common/nav"}
+        <!-- /Side menu -->
+
+        <!-- Main window -->
+        <div class="main_container" id="users_page">
+
+            <div class="row-fluid">
+                <ul class="breadcrumb">
+                </ul>
+                <h2 class="heading">
+                    项目管理
+                    <div class="btn-group pull-right">
+                    </div>
+                </h2>
+            </div> <!-- /row-fluid -->
+            <div class="row-fluid">
+                <!-- /widget -->
+            </div> <!-- /row-fluid -->
+
+            <div class="row-fluid">
+                <div class="widget widget-padding span12">
+                    <div class="widget-header">
+                        <i class="icon-group"></i>
+                        <h5>项目</h5>
+                        <div class="widget-buttons">
+                            <a href="/examination/public/admin/projectAdd"><i class="icon-plus"></i></a>
+                            <!--<a href="#" data-title="Collapse" data-collapsed="false" class="collapse"><i class="icon-chevron-up"></i></a>-->
+                        </div>
+                    </div>
+                    <div class="widget-body" style="overflow: hidden; display: block;">
+                        <div id="users_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <div class="row-fluid"><div class="span6">
+                                <div id="users_length" class="dataTables_length"></div></div></div>
+                            <table id="users" class="table table-striped table-bordered dataTable" aria-describedby="users_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-sort="ascending" aria-label="User: activate to sort column descending" style="width: 191px;">项目名</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Registered: activate to sort column ascending" style="width: 235px;">项目类别</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Registered: activate to sort column ascending" style="width: 235px;">项目意义</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Registered: activate to sort column ascending" style="width: 235px;">项目创建时间</th>
+                                <th class="" role="columnheader" tabindex="0" aria-controls="users" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 186px;"> </th>
+                            </tr>
+                            </thead>
+
+                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                            {volist name="list" id="project"}
+                            <tr class="">
+                                <td class="">{$project.name}</td>
+                                <td class=" ">{$project.cate_name}</td>
+                                <td class="">{$project.target}</td>
+                                <td class=" ">{$project.create_time}</td>
+                                <td class=" ">
+                                    <div class="btn-group">
+                                        <a class="btn" data-toggle="dropdown" href="/examination/public/admin/projectEdit?id={$project.id}">
+                                            编辑
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                            </table>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="dataTables_info" id="users_info">
+                                    </div>
+                                </div><div class="span6">
+                                <div class="dataTables_paginate paging_bootstrap pagination">
+                                    {$page}
+                                </div>
+                            </div>
+                            </div>
+                        </div> <!-- /widget-body -->
+
+                </div> <!-- /widget -->
+            </div> <!-- /row-fluid -->
+
+        </div>
+        <!-- /Main window -->
+
+    </div>
+</div><!-- wrap ends-->
+
+
+<!-- example modal -->
+<div id="example_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Support Ticket</h3>
+    </div>
+    <div class="modal-body">
+        <p>Here you can view and manage this support ticket.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Save changes</button>
+    </div>
+</div>
+
+<!-- example modal -->
+<div id="example_modal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Example Modal</h3>
+    </div>
+    <div class="modal-body">
+        <p>Here you can write more information about the object you clicked</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Save changes</button>
+    </div>
+</div>
+
+
+
+<!-- task_modal modal -->
+<div id="task_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Task info example</h3>
+    </div>
+    <div class="modal-body">
+        <div class="clearfix">
+            <img src="../admin/img/avatars/11.jpg" class="img-circle" style="float: left; width: 65px; margin-right: 20px;">
+            <h3 style="margin:0">John</h3>
+            <p class="muted">Marketing</p>
+        </div>
+        <hr>
+        <h5>Task</h5>
+        <p>Create a marketing plan for the new campaign</p>
+        <h5>status&nbsp;&nbsp;<small>60%</small></h5>
+        <div class="progress">
+            <div class="bar" style="width: 60%;"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+</div>
+
+</body>

@@ -3,7 +3,7 @@ namespace app\index\service;
 
 use app\index\model\User;
 
-class UserService extends User
+class UserService extends BaseService
 {
     public function add($data){
         $user=[
@@ -18,14 +18,15 @@ class UserService extends User
             'card'=>$data['card'],
             'gender'=>$data['sex']
         ];
-
-        return $this->addUser($user);
+        $userModel = new User();
+        return $userModel->addUser($user);
     }
 
     public function checkUser($userName,$password=''){
+        $userModel = new User();
         if(empty($password)){
-            return $this->getUserBy(['user_name'=>$userName]);
+            return $userModel->getUserBy(['user_name'=>$userName]);
         }
-        return $this->getUserBy(['user_name'=>$userName,'password'=>$password]);
+        return $userModel->getUserBy(['user_name'=>$userName,'password'=>$password]);
     }
 }

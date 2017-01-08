@@ -1,0 +1,92 @@
+{include file="/common/head"}
+<body>
+<div class="topbox">
+    <!--顶部-->
+    {include file="/common/top"}
+    <!---->
+    <!--头部-->
+    {include file="/common/header"}
+    <!---->
+    <!--导航栏-->
+    {include file="/common/nav"}
+    <!---->
+    <link href="../public/static/css/order.css" rel="stylesheet" />
+    <link href="../public/static/css/shopping.css" rel="stylesheet" />
+</div>
+<div class="content">
+    <div class="shopping">
+        <div class="information">
+            <h1>订单信息</h1>
+            <div class="personalinfo">
+                <h1>订单人信息</h1>
+                <div class="personalname">
+                    <span>
+                        姓名：
+                    </span>
+                    <input type="text" name="personalName" maxlength="15" id="personalName" value="{$appointment.user}" disabled/>
+                </div>
+                <div class="personaltel">
+                    <span>
+                        手机号码：
+                    </span>
+                    <input type="text" name="personalTel" size="11" id="personalTel" value="{$appointment.mobile}" disabled/>
+                </div>
+            </div>
+            <div class="payway">
+                <h1>支付方式</h1>
+                <input type="hidden" id="payType" name="payType" value="1"/>
+                <p class="outlinepay clearfix">
+                    <a href="javascript:;" class="active">到场支付
+                    </a>
+                </p>
+            </div>
+            <input name="num" type="hidden" id="num"/>
+            <input name="price" type="hidden" id="price"/>
+            <input name="package_id" type="hidden" id="package_id"/>
+            <div class="subshopinfo">
+                <h1>套餐信息</h1>
+                <div class="shopgroup">
+                    <h2 class="grouphead">
+                        <p>{$appointment.orga_name}</p>
+                        <span>单价</span>
+                        <span>数量</span>
+                        <span>小计</span>
+                        <span class="last">支付方式</span>
+                    </h2>
+                    <ul class="clearfix">
+                        <li class="shopimg">
+                            <img width="160" height="120" src="..{$package.picture}" alt="未找到图片" class="scrollLoading">
+                        </li>
+                        <li class="textcontent">
+
+                            <p style="margin-top:10px;color:#6e6e6f;font-size:14px" >{$appointment.orga_name}</p>
+                            <p style="margin-top:10px;color:#6e6e6f;font-size:14px" data-package_id="{$package.id}" id="pack">{$appointment.pack_name}</p>
+
+                        </li>
+                        <li class="price" ><del>{$package.old_price}</del><br>
+                            <span>{$package.price}</span></li>
+                        <li class="number">{$appointment.num}</li>
+                        <li class="count"><b>{$appointment.price}</b>
+                        </li>
+                        <li class="zhichiway">
+
+                            <p>到场支付</p>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="realpay clearfix">
+                <div class="subfixed clearfix">
+                    <div class="moneytext">
+                        <span>实付金额：</span>
+                        <b class="realmoney" >￥{$appointment.price}</b>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{include file="/common/foot"}
+</body>

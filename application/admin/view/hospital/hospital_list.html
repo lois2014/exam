@@ -1,0 +1,60 @@
+{include file="/common/head"}
+<body>
+<div class="topbox">
+    <!--顶部-->
+    {include file="/common/top"}
+    <!---->
+    <!--头部-->
+    {include file="/common/header"}
+    <!---->
+    <!--导航栏-->
+    {include file="/common/nav"}
+    <!---->
+</div>
+<div class="content">
+    <div class="list_jg">
+        <div class="list_jg_left fl">
+            <div class="select_left fl">
+                <div class="list_jg_body fl">
+                    <ul>
+                        {volist name="list" id="hospital" }
+                        <li>
+                            <div>
+                                <samp>
+                                    <a href="/examination/public/hospital_detail?id={$hospital.id}" target="_blank">
+                                        <img src="..{$hospital.picture}" width="239" height="171">
+                                    </a>
+                                </samp>
+                                <dl>
+                                    <dt>
+                                        <a href="/examination/public/hospital_detail?id={$hospital.id}" target="_blank"> {$hospital.name}</a>
+                                            <p><em>体检套餐
+                                                <span>{$hospital.package_num}个</span>
+                                                <b>￥{$hospital.price}</b>
+                                                <span>起</span>
+                                            </em></p>
+                                    </dt>
+                                    <dd>
+                                        <samp class="dd_hospital"></samp>
+                                        <em>{$hospital.level}</em>
+                                    </dd>
+                                    <dd>
+                                        <samp class="dd_address"></samp>
+                                        <em>{$hospital.address}</em>
+                                    </dd>
+                                    <dd>
+                                        <samp class="dd_timeclock"></samp>
+                                        <em>{$hospital.avaliable_time}</em>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                {$page}
+            </div>
+        </div>
+    </div>
+</div>
+{include file="/common/foot"}

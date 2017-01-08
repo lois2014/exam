@@ -13,6 +13,8 @@
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
+define('INDEX_URL_PATH','/examination/public/');
+define('ADMIN_URL_PATH', '/examination/public/admin/');
 define('APP_DEBUG',true);
 define('DB_FIELD_CACHE',false);
 define('HTML_CACHE_ON',false);
