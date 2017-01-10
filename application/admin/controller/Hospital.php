@@ -31,19 +31,80 @@ class Hospital extends Base
         return $this->fetch('hospital_detail');
     }
 
+    public function edit()
+    {
+        $data = $this->request->post();
+        $hosSer = new HospitalService();
+        if(empty($data)){
+            $id = $this->request->get('id');
+            if(empty($id)) return $this->error('出错了！！',ADMIN_URL_PATH.'hospitalList');
+            $hospital = $hosSer->getHospital($id);
+//        var_dump($hospital);die;
+            $this->assign('hospital', $hospital);
+            return $this->fetch('detail');
+        }
+        $file = !empty($_FILES['picture'])?$_FILES['picture']:'';
+        if($file && !empty($file['name'])){
+            $res = json_decode($this->checkImg($file),true);
+            if($res['state'] == 0){
+                return $this->error($res['msg'],ADMIN_URL_PATH.'hospitalList');
+            }
+            $fileName = $file['name'];
+
+            $filePath = $this->upload($file);
+            if(!$filePath)  return $this->error('更新失败',ADMIN_URL_PATH.'hospitalList');
+            $data['picture'] = $filePath;
+            unset($_FILES['picture']);
+        }
+        unset($data['MAX_FILE_SIZE']);
+        $id = $hosSer->update($data);
+        if(empty($id)){
+            return $this->error('更新失败',ADMIN_URL_PATH.'hospitalList');
+        }
+        return $this->success('更新成功',ADMIN_URL_PATH.'hospitalEdit?id='.$id);
+    }
+
     public function addHospital(){
         $data = $this->request->post();
         if(empty($data)){
             return $this->fetch('add');
         }
+        $file = !empty($_FILES['picture'])?$_FILES['picture']:'';
+        if($file && !empty($file['name'])){
+            $res = json_decode($this->checkImg($file),true);
+            if($res['state'] == 0){
+                return $this->error($res['msg'],ADMIN_URL_PATH.'hospitalList');
+            }
+            $fileName = $file['name'];
+            
+            $filePath = $this->upload($file);
+            if(!$filePath)  return $this->error('新增失败',ADMIN_URL_PATH.'hospitalList');
+            $data['picture'] = $filePath;
+            unset($_FILES['picture']);
+        }
+        unset($data['MAX_FILE_SIZE']);
         $hosSer = new HospitalService();
         $id = $hosSer->add($data);
         if(empty($id)){
-            return $this->success('新增失败','/examination/public/');
+            return $this->success('新增失败',ADMIN_URL_PATH.'hospitalList');
         }
-        return $this->success('新增成功','/examination/public/');
+        return $this->success('新增成功',ADMIN_URL_PATH.'hospitalEdit?id='.$id);
     }
 
-
-
+    public function delHospital(){
+        $id = $this->request->get('id');
+        if(empty($id)){
+            return $this->error('出错了!!!',ADMIN_URL_PATH.'hospitalList');
+        }
+        $data=[
+            'id'=>$id,
+            'status'=>0
+        ];
+        $hosSer = new HospitalService();
+        $id = $hosSer->update($data);
+        if(empty($id)){
+            return $this->error('删除失败',ADMIN_URL_PATH.'hospitalList');
+        }
+        return $this->success('删除成功',ADMIN_URL_PATH.'hospitalList');
+    }
 }

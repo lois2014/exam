@@ -26,26 +26,34 @@
                     </div>
                     <div class="widget-body">
                         <div class="widget-forms clearfix">
-                            <form class="form-horizontal" action="/examination/public/admin/hospitalEdit" method="post">
-                                <input type="hidden" value="{$hospital.id}" name="id">
+                            <form class="form-horizontal" enctype="multipart/form-data" action="/examination/public/admin/hospitalAdd" method="post">
+                            <div class="control-group">
+                                    <label class="control-label">展示图片</label>
+                                    <div class="controls">
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+                                            <input name="picture" type="file" style="display: none" id="upload" />
+                                            <img src="../../public/asset/img/upload_default.jpg" name="picture" width="200px" height="200px" id="picture">
+                                            <span class="help-inline"></span>
+                                    </div>
+                                </div>
                                 <div class="control-group">
                                     <label class="control-label">机构名称</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="name" value="{$hospital.name}">
+                                        <input class="span7" type="text" placeholder="" name="name" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">机构地址</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="address" value="{$hospital.address}">
+                                        <input class="span7" type="text" placeholder="" name="address" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">预约时间</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="avaliable_time" value="{$hospital.avaliable_time}">
+                                        <input class="span7" type="text" placeholder="" name="avaliable_time" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
@@ -55,13 +63,8 @@
                                     <div class="controls">
                                         <select tabindex="1" data-placeholder="" class="span7" name="display">
                                             <option value=""></option>
-                                            {if $hospital.dispaly == 1}
-                                            <option value="1" selected>显示</option>
+                                            <option value="1">显示</option>
                                             <option value="2">不显示</option>
-                                            {else}
-                                            <option value="1" >显示</option>
-                                            <option value="2" selected>不显示</option>
-                                            {/if}
                                         </select>
                                     </div>
                                 </div>
@@ -69,14 +72,14 @@
                                 <div class="control-group">
                                     <label class="control-label">机构级别</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="level" value="{$hospital.level}">
+                                        <input class="span7" type="text" placeholder="" name="level" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">机构简介</label>
                                     <div class="controls">
-                                        <textarea class="span7" rows="5" style="height:100px;" name="description">{$hospital.description}</textarea>
+                                        <textarea class="span7" rows="5" style="height:100px;" name="description"></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -84,7 +87,7 @@
                     </div>
                     <div class="widget-footer">
                         <button class="btn btn-primary" type="submit" onclick="save();">保存</button>
-                        <button class="btn" type="button" onclick="javascript:window.history.back()">取消</button>
+                        <button class="btn" type="button" onclick="javascript:window.location='/examination/public/admin/hospitalList'">返回</button>
                     </div>
                 </div>
             </div>
@@ -107,15 +110,29 @@
 <script type="text/javascript" src="../asset/js/jquery.alertify.min.js"></script>
 <script type="text/javascript" src="../asset/js/jquery.knob.js"></script>
 <script type='text/javascript' src='../asset/js/fullcalendar.min.js'></script>
-<script type='text/javascript' src='../asset/js/jquery.gritter.min.js'></script>
 <script type="text/javascript" src="../asset/js/realm.js"></script>
 
 <script type="text/javascript" src="../asset/js/select2.min.js"></script>
 <script type="text/javascript" src="../asset/js/bootstrap-colorpicker.js"></script>
-<script type="text/javascript" src="../asset/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../asset/js/bootstrap-datepicker.js"></script>                      
 <script type="text/javascript" src="../asset/js/bootstrap-timepicker.js"></script>
 </body>
 <script>
+    $(function(){
+       $('#picture').click(function(){
+           $('#upload').click();
+           $('#upload').on("change",function(){
+               var img = this.files[0];
+               var reader = new FileReader();
+               reader.onload = function(){
+                   var data = this.result;
+                   $('#picture').attr('src',data);
+//                   $('#upload').val(data);
+               };
+               reader.readAsDataURL(img);
+           })
+       })
+    });
     function save()
     {
         $('.form-horizontal').submit();

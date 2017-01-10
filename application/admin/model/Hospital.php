@@ -22,6 +22,19 @@ class Hospital extends Model
         return Db::name('hospital')->insertGetId($data);
     }
 
+    public function updateHospital($data)
+    {
+        if(!empty($data['id'])) {
+            $hosModel = new Hospital();
+            $res = $hosModel->allowField(true)->update($data);
+            if(!$res){
+                return '';
+            }
+            return $data['id'];
+        }
+        return '';
+    }
+
     public function queryHospitalList($where,$order='',$start='',$limit='',$field='*',$usePaginate=false){
         $query = Db::table('hospital')->field($field)->where($where);
         if(!empty($order)){

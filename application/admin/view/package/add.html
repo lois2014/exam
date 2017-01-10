@@ -26,42 +26,41 @@
                     </div>
                     <div class="widget-body">
                         <div class="widget-forms clearfix">
-                            <form enctype="multipart/form-data" class="form-horizontal" action="/examination/public/admin/packageEdit?id={$package.id}" method="post" >
-                                <input name="id" value="{$package.id}" type="hidden"/>
+                            <form class="form-horizontal" enctype="multipart/form-data" action="/examination/public/admin/packageAdd" method="post">
                                 <div class="control-group">
-                                    <label class="control-label"></label>
-                                <div class="controls">
-                                        <input type="hidden" name="MAX_FILE_SIZE" value="100000"/>
-                                        <input name="package_pic" type="file" style="display: none" id="package_upload" />
-                                        <img src="../../{$package.picture}" name="package_pack" width="200px" height="200px" id="package_pic">
-                                        <span class="help-inline"></span>
-                                </div>
+                                    <label class="control-label">展示图片</label>
+                                    <div class="controls">
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+                                            <input name="picture" type="file" style="display: none" id="upload" />
+                                            <img src="../../public/asset/img/upload_default.jpg" name="picture" width="200px" height="200px" id="picture">
+                                            <span class="help-inline"></span>
+                                    </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">套餐名</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="name" value="{$package.name}">
+                                        <input class="span7" type="text" placeholder="" name="name" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">套餐价格</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="price" value="{$package.price}">
+                                        <input class="span7" type="text" placeholder="" name="price" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">套餐原价</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="old_price" value="{$package.old_price}">
+                                        <input class="span7" type="text" placeholder="" name="old_price" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">套餐折扣</label>
                                     <div class="controls">
-                                        <input class="span7" type="text" placeholder="" name="discount" value="{$package.discount}">
+                                        <input class="span7" type="text" placeholder="" name="discount" value="">
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
@@ -70,13 +69,8 @@
                                     <label class="control-label">是否显示</label>
                                     <div class="controls">
                                         <select tabindex="1" data-placeholder="" class="span7">
-                                            {if $package.display==1}
                                             <option value="1" selected>显示</option>
                                             <option value="0" >不显示</option>
-                                            {else}
-                                            <option value="0" selected>不显示</option>
-                                            <option value="1">显示</option>
-                                            {/if}
                                         </select>
                                     </div>
                                 </div>
@@ -87,11 +81,7 @@
                                         <select id="select2-basic" tabindex="1" data-placeholder="" class="span7" name="orga_id">
                                             <option value=""></option>
                                             {volist name="hospitals" id="hospital"}
-                                            {if $hospital.id == $package.orga_id}
-                                            <option value="{$hospital.id}" selected>{$hospital.name}</option>
-                                            {else}
                                             <option value="{$hospital.id}">{$hospital.name}</option>
-                                            {/if}
                                             {/volist}
                                         </select>
                                     </div>
@@ -103,11 +93,7 @@
                                         <select id="select2-multi-value" multiple="" data-placeholder="Select here.." class="span7" name="projects[]">
                                             <option value=""></option>
                                             {volist name="projects" id="project"}
-                                              {if isset($project.select) && $project.select == 1}
                                                 <option value="{$project.id}" selected>{$project.name}</option>
-                                            {else}
-                                            <option value="{$project.id}">{$project.name}</option>
-                                            {/if}
                                             {/volist}
                                         </select>
                                     </div>
@@ -115,7 +101,7 @@
                                 <div class="control-group">
                                     <label class="control-label">套餐简介</label>
                                     <div class="controls">
-                                        <textarea class="span7" rows="5" style="height:100px;" name="description">{$package.description}</textarea>
+                                        <textarea class="span7" rows="5" style="height:100px;" name="description"></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -154,17 +140,16 @@
 <script type="text/javascript" src="../asset/js/bootstrap-timepicker.js"></script>
 </body>
 <script>
-
     $(function(){
-       $('#package_pic').click(function(){
-           $('#package_upload').click();
-           $('#package_upload').on("change",function(){
+       $('#picture').click(function(){
+           $('#upload').click();
+           $('#upload').on("change",function(){
                var img = this.files[0];
                var reader = new FileReader();
                reader.onload = function(){
                    var data = this.result;
-                   $('#package_pic').attr('src',data);
-                  // $('#upload').val(data);
+                   $('#picture').attr('src',data);
+//                   $('#upload').val(data);
                };
                reader.readAsDataURL(img);
            })

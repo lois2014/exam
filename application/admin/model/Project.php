@@ -46,7 +46,7 @@ class Project extends Model
     public function getProjectsByPackageId($id){
         $list = Db::table('project')
             ->alias('pr')
-            ->field('c.name as cate_name,c.id as cate_id,pr.name as pro_name,pr.target')
+            ->field('c.name as cate_name,c.id as cate_id,pr.name as pro_name,pr.target,pr.id')
             ->join('package_project_relation r','r.pro_id = pr.id','left')
             ->join('project_category c','c.id = pr.cate_id')
             ->where(['r.pack_id'=>$id,'pr.status'=>1])

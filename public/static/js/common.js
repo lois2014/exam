@@ -36,7 +36,7 @@ $(document).ready(function() {
                 $("#login").hide();
                 $("#register").hide();
                 var doc = document.getElementById('userInfo');
-                doc.innerHTML="&nbsp;<a>欢迎！" + result.data.userName + "</a>";
+                doc.innerHTML="&nbsp;<a>欢迎！" + result.data.user_name + "</a> <a href='/examination/public/logout'>退出</a>";
 
             }
         },

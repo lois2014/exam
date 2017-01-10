@@ -47,7 +47,8 @@ class Order extends Base
             'pack_name'=>$package['name'],
             'orga_id'=>$package['orga_id'],
             'orga_name'=>$package['orga_name'],
-            'order_no'=>$this->setOrderNo()
+            'order_no'=>$this->setOrderNo(),
+            'appointment_status'=>1
         ];
         $appSer = new AppointmentService();
         $id = $appSer->addAppointment($data);
@@ -66,7 +67,7 @@ class Order extends Base
             $this->assign('id',$id);
             return $this->fetch('order_time');
         }
-//        var_dump($post);die;
+        $post = array_merge($post,['appointment_status'=>2]);
         $appSer = new AppointmentService();
         $res = $appSer->updateAppointment($post);
         if(!$res){

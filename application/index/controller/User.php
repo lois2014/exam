@@ -8,7 +8,7 @@ class User extends Base
     public function login()
     {
         if($this->isLogin()){
-            return $this->fetch();
+            return $this->error('已登录',INDEX_URL_PATH);
         }
         $data = $_POST;
 
@@ -20,13 +20,14 @@ class User extends Base
         if(isset($data['password'])){
             $data['password'] = md5($data['password']);
         }
-        $isUser = $userSer->checkUser($data['userName'],$data['password']);
-        if(!$isUser){
+        $userInfo = $userSer->getUser($data['userName'],$data['password']);
+        if(!$userInfo){
             return $this->error('用户名或者密码错误');
         }
-        $user['password'] = $data['password'];
-        $user['user_name'] = $data['userName'];
-        $this->userLogin($data);
+        $user['id'] = $userInfo['id'];
+        $user['user_name'] = $userInfo['user_name'];
+        $user['role'] = $userInfo['role_id'];
+        $this->userLogin($user);
         return $this->success('登录成功','/examination/public');
     }
 
@@ -55,5 +56,15 @@ class User extends Base
             return $this->ajaxFail('未登录');
         }
         return $this->ajaxSuccess($user);
+    }
+
+    public function logout()
+    {
+        $res = $this->clearCookie('user');
+        if($res){
+            return $this->success('注销成功',INDEX_URL_PATH);
+        }else{
+            return $this->error('注销失败',INDEX_URL_PATH);
+        }
     }
 }

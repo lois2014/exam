@@ -19,15 +19,6 @@ class Project extends Base
         return $this->fetch('index',$res);
     }
 
-    public function getProject()
-    {
-        $id = $this->request->get('id');
-        $proSer = new ProjectService();
-        $project = $proSer->getProject($id);
-        $this->assign('project',$project);
-        return $this->fetch('project_detail');
-    }
-
     public function editProject()
     {
         $data = $this->request->post();
@@ -43,8 +34,29 @@ class Project extends Base
             return $this->fetch('detail');
         }
 //        var_dump($data);die;
-        $project = $proSer->updateProject($data);
+        $res = $proSer->updateProject($data);
+        if(!$res){
+            return $this->error('更新失败',ADMIN_URL_PATH.'projectList');
+        }
         return $this->success('更新成功',ADMIN_URL_PATH.'projectList');
+    }
+    public function delProject()
+    {
+        $id = $this->request->get('id');
+
+        if(!empty($id)){
+            $proSer = new ProjectService();
+            $data=[
+                'id'=>$id,
+                'status'=>0
+            ];
+            $res = $proSer->updateProject($data);
+            if(!$res){
+                return $this->error('删除失败',ADMIN_URL_PATH.'projectList');
+            }
+            return $this->success('删除成功',ADMIN_URL_PATH.'projectList');
+        }
+        return $this->error('出错了！！',ADMIN_URL_PATH);
     }
 
     public function addProject()

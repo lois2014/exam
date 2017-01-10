@@ -64,13 +64,20 @@
                                 <td class=" ">{$app.num}</td>
                                 <td class=" ">{$app.price}</td>
                                 <td class=" ">{$app.create_time}</td>
-                                <td class=" ">{$app.status?'成功':'取消'}</td>
+                                <td class=" ">
+                                    {switch name="app.appointment_status"}
+                                       {case value="1"}新建{/case}
+                                       {case value="2"}成功{/case}
+                                       {case value="3"}失败{/case}
+                                       {case value="4"}取消{/case}
+                                    {/switch}
+                                </td>
                                 <td class=" ">
                                     <div class="btn-group">
-                                    <a class="btn btn-small" href="/examination/public/admin/packageDetail?id={$app.pack_id}">套餐详情</a><br><a class="btn btn-small" href="/examination/public/admin/hospitalDetail?id={$app.orga_id}">机构详情</a>
+                                    <a class="btn btn-small" href="/examination/public/admin/packageEdit?id={$app.pack_id}">套餐详情</a><br><a class="btn btn-small" href="/examination/public/admin/hospitalEdit?id={$app.orga_id}">机构详情</a>
                                     </div>
                                 </td>
-
+                                </div>
                             </tr>
                             {/volist}
                             </tbody>

@@ -59,7 +59,7 @@ class User extends Base
 
     public function getUserList(){
         $userSer = new UserService();
-        $ret = $userSer->getList(1);
+        $ret = $userSer->getList(5);
         return $this->fetch('index',$ret);
     }
 

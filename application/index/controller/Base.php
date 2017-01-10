@@ -23,8 +23,8 @@ class Base extends Controller
     }
 
     public function userLogin($user){
-        if($this->isLogin()) return true;
 
+        if($this->isLogin()) return true;
         Cookie::set('user',$user);
         return true;
     }
@@ -46,5 +46,16 @@ class Base extends Controller
             'data'=>$data
         ];
         return json_encode($return);
+    }
+
+    public function clearCookie($key)
+    {
+        if(empty($key)){
+            return false;
+        }
+        if(Cookie::has($key)) {
+            Cookie::delete($key);
+        }
+        return true;
     }
 }

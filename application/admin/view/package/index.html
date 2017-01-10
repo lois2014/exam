@@ -31,7 +31,7 @@
                         <i class="icon-group"></i>
                         <h5>套餐</h5>
                         <div class="widget-buttons">
-                            <a href="#" data-title="Add User" data-toggle="modal" data-target="#example_modal"><i class="icon-plus"></i></a>
+                            <a href="/examination/public/admin/packageAdd" data-title="" data-toggle="" data-target=""><i class="icon-plus"></i></a>
                             <!--<a href="#" data-title="Collapse" data-collapsed="false" class="collapse"><i class="icon-chevron-up"></i></a>-->
                         </div>
                     </div>
@@ -54,15 +54,18 @@
                             <tbody role="alert" aria-live="polite" aria-relevant="all">
                             {volist name="list" id="package"}
                             <tr class="">
-                                <td class="">{$package.name}</td>
-                                <td class=" ">{$package.hospital.name}</td>
-                                <td class=" ">{$package.price}</td>
-                                <td class=" ">{$package.sale_num}</td>
-                                <td class=" ">{$package.create_time}</td>
+                                <td class="">{$package.name|default=""}</td>
+                                <td class=" ">{$package.hospital.name|default=""}</td>
+                                <td class=" ">{$package.price|default=""}</td>
+                                <td class=" ">{$package.sale_num|default=""}</td>
+                                <td class=" ">{$package.create_time|default=""}</td>
                                 <td class=" ">
                                     <div class="btn-group">
                                         <a class="btn" data-toggle="dropdown" href="/examination/public/admin/packageEdit?id={$package.id}">
                                             编辑
+                                        </a>
+                                        <a class="btn" data-toggle="dropdown" href="/examination/public/admin/packageDel?id={$package.id}">
+                                            删除
                                         </a>
                                     </div>
                                 </td>

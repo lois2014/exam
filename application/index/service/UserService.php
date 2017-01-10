@@ -29,4 +29,13 @@ class UserService extends BaseService
         }
         return $userModel->getUserBy(['user_name'=>$userName,'password'=>$password]);
     }
+
+    public function getUser($userName,$password)
+    {
+        $userModel = new User();
+        if(empty($password) || empty($password)){
+            return [];
+        }
+        return $userModel->getUserBy(['user_name'=>$userName,'password'=>$password]);
+    }
 }

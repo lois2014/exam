@@ -14,12 +14,8 @@ class Index extends Base
 
     public function index()
     {
-//        $hospitalSer = new HospitalService();
-//        $packSer = new PackageService();
-//        $hospitalList = $hospitalSer->getList(0,6);
-//        $packList = $packSer->getList(0,6);
-//        $this->assign('hospitals',$hospitalList);
-//        $this->assign('packages',$packList);
+        $user = $this->getUserInfo();
+        $this->assign('user',$user);
         return $this->fetch();
     }
 }

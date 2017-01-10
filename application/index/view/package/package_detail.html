@@ -93,7 +93,7 @@
                                 <p>因为体检中心体检项目内容会不定期做调整，具体套餐信息以体检中心实际检查项目为准！</p>
                             </div>
                             <table class="tc_table" cellpadding="0" cellspacing="0" border="0">
-                                {volist name="package.project" id="cates"}
+
                                 <tbody>
                                 <tr>
                                     <th width="215" colspan="2" scope="col">
@@ -102,11 +102,11 @@
                                     体检指标
                                 </th>
                                 </tr>
+                                {volist name="package.project" id="cates"}
                                 <tr>
                                     <td colspan="3" style="text-align: left; padding-left: 15px; font-size: 16px; color: #019eeb; background-color: #f3f3f3;">{$cates.cate_name}({$cates.size}项）</td>
                                 </tr>
                                     {volist name="cates.list" id="project"}
-
                                     <tr>
                                         <td width="215" colspan="2" scope="col">
                                             {$project.pro_name}

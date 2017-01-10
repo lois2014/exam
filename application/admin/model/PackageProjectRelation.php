@@ -6,7 +6,7 @@ use think\Model;
 
 class PackageProjectRelation extends Model
 {
-    public function getProject($id)
+    public function getRelation($id)
     {
         $Project = Db::table('package_project_relation')->alias('p')
             ->where(['p.id'=>$id])
@@ -14,17 +14,17 @@ class PackageProjectRelation extends Model
         return empty($Project)?[]:current($Project);
     }
 
-    public function getProjectBy($where){
-        $project = Db::table("package_project_relation")->where($where)->find();
+    public function getRelationsBy($where){
+        $project = Db::table("package_project_relation")->where($where)->select();
         return empty($project)?[]:$project;
     }
 
-    public function addProject($data)
+    public function addRelation($data)
     {
         return Db::name('package_project_relation')->insertGetId($data);
     }
 
-    public function queryProjectList($where,$order='',$start='',$limit='',$field='*',$userPaginate=false){
+    public function queryRelationList($where,$order='',$start='',$limit='',$field='*',$userPaginate=false){
         $query = Db::table('package_project_relation')->field($field)->where($where);
         if(!empty($order)){
             $query=$query->order($order);
@@ -40,9 +40,10 @@ class PackageProjectRelation extends Model
         return empty($list)?[]:$list;
     }
 
-    public function deleteRelation($ids)
+    public function deleteRelation($where)
     {
-        $res = Db::table('package_project_relation')->delete($ids);
+        if(empty($where)) return false;
+        $res = Db::table('package_project_relation')->where($where)->delete();
         return true;
     }
 
